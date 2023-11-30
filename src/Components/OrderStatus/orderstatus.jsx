@@ -10,7 +10,13 @@ const OrderStatusPage = () => {
   const [selectedStatus, setSelectedStatus] = useState(null);
   const [orderFromUser, setOrderFromUser] = useState(null)
   const state = useLocation()
-  const socket = io("http://localhost:4009");
+  
+  const baseURL = process.env.NODE_ENV === "production"
+  ? "https://eatezyrestouser.onrender.com"
+  : "http://localhost:4009";
+
+  const socket = io(baseURL);
+
   const orderStatus = useRef(null)
 
 
